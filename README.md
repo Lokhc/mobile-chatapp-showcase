@@ -85,13 +85,12 @@ flowchart TD
 ## Key Decisions
 
 **Why a monorepo?**
-To share TypeScript types (including DTOs) between backend and frontend, 
+To share TypeScript types between backend and frontend, 
 keeping contracts consistent and avoiding duplication.
 
 **Why Clean Architecture + CQRS?**
 Because the project has enough complexity to justify it. I wanted to 
-practice separating concerns and designing for maintainability, not just 
-shipping features.
+practice separating concerns and designing for maintainability.
 
 **Why WebSockets?**
 Real-time communication is core to a chat app. It was also a chance to 
