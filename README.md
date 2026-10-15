@@ -52,13 +52,44 @@ The backend is where the complexity is more challenging. I've been applying:
 - **Dependency injection** — decoupling implementations from contracts
 - **Design patterns** — applied where they solve real problems, not for the sake of it
 
-```mermaid
+flowchart LR
+    subgraph Apps
+        A[apps/backend<br/>Express + Socket.io]
+        B[apps/mobile<br/>React Native + Expo]
+    end
+
+    subgraph Packages
+        C[packages/shared<br/>DTOs + Types]
+        D[packages/tsconfig<br/>Config compartida]
+    end
+
+    A -->|importa| C
+    B -->|importa| C
+    A -->|usa| D
+    B -->|usa| D
+
 flowchart TD
-    A[Frontend: React Native + Expo] -->|Shared Types DTOs| B[Backend]
-    B --> C[Application Layer: CQRS]
-    B --> D[Domain Layer]
-    B --> E[Infrastructure: Express, MongoDB, WebSockets]
-```
+    Client[Cliente<br/>Mobile / Postman] -->|HTTP Request| Router[Router<br/>interfaces]
+    Router -->|Middleware auth| Controller[Controller<br/>interfaces/controllers]
+    Controller -->|llama| UseCase[Use Case<br/>application]
+    UseCase -->|reglas de negocio| Domain[Domain<br/>entidades + validaciones]
+    UseCase -->|repository interface| Repo[Repository<br/>infrastructure]
+    Repo -->|Mongoose| MongoDB[(MongoDB)]
+
+    UseCase -.->|publica evento| EventBus[EventEmitter]
+    EventBus -.->|WebSocket| Socket[Socket.io<br/>infrastructure]
+    Socket -.->|push| Client
+
+    flowchart LR
+    subgraph Command
+        C1[CreateConversationUseCase] --> C2[Conversation<br/>entidad pura]
+        C2 --> C3[(MongoDB)]
+    end
+
+    subgraph Query
+        Q1[GetConversationsWithDetailsUseCase] --> Q2[ConversationReadModel]
+        Q2 -->|$lookup| Q3[(MongoDB)]
+    end
 
 ---
 
