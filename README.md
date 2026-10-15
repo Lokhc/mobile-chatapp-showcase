@@ -4,7 +4,6 @@
 ---
 
 ## Why I Built This
-
 I'm building a full-stack chat app as a personal project. It's organized as 
 a monorepo, where backend and frontend share TypeScript types (like DTOs) 
 to keep everything consistent across layers.
