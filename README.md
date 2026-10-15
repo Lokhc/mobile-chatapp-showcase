@@ -91,6 +91,7 @@ flowchart TD
 ```
 
 ```mermaid
+    flowchart LR
     subgraph Query
         Q1[GetConversationsWithDetailsUseCase] --> Q2[ConversationReadModel]
         Q2 -->|$lookup| Q3[(MongoDB)]
