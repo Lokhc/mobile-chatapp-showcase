@@ -47,7 +47,7 @@ The backend is where the complexity is more challenging. I've been applying:
 - **CQRS principles** — separating reads from writes
 - **Event-driven design** — domain events and handlers
 - **Dependency injection** — decoupling implementations from contracts
-- **Design patterns** — applied where they solve real problems, not for the sake of it
+- **Design patterns** — DTOs contracts
 
 The monorepo is organized into applications and shared packages. Both apps import types and DTOs from the shared package, keeping contracts consistent across the stack.
 
