@@ -35,7 +35,7 @@ the code end to end myself and having the mental model of every single line.
 - **Secure storage:** expo-secure-store
 
 ### Shared
-- **Monorepo:** Backend and frontend share TypeScript types (including DTOs)
+- **Monorepo:** Backend and frontend share TypeScript types
 
 ### Planned
 - Redis for caching (still evaluating alternatives)
