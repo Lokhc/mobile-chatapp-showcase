@@ -1,6 +1,3 @@
-# mobile-chatapp-showcase
-personal project - full stack mobile chat app 
-
 # Chat App — Full Stack Architecture Showcase
 
 > A personal project focused on developing architectural thinking and 
