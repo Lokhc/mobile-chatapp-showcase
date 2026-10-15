@@ -52,6 +52,8 @@ The backend is where the complexity is more challenging. I've been applying:
 - **Dependency injection** — decoupling implementations from contracts
 - **Design patterns** — applied where they solve real problems, not for the sake of it
 
+The monorepo is organized into applications and shared packages. Both apps import types and DTOs from the shared package, keeping contracts consistent across the stack.
+
 ```mermaid
 flowchart LR
     subgraph Apps
@@ -61,37 +63,40 @@ flowchart LR
 
     subgraph Packages
         C[packages/shared<br/>DTOs + Types]
-        D[packages/tsconfig<br/>Config compartida]
+        D[packages/tsconfig<br/>Shared config]
     end
 
-    A -->|importa| C
-    B -->|importa| C
-    A -->|usa| D
-    B -->|usa| D
+    A -->|imports| C
+    B -->|imports| C
+    A -->|uses| D
+    B -->|uses| D
 ```
+
+A request flows through the layers of Clean Architecture. The domain layer has no knowledge of the outer layers — dependencies point inward.
 
 ```mermaid
 flowchart TD
-    Client[Cliente<br/>Mobile / Postman] -->|HTTP Request| Router[Router<br/>interfaces]
-    Router -->|Middleware auth| Controller[Controller<br/>interfaces/controllers]
-    Controller -->|llama| UseCase[Use Case<br/>application]
-    UseCase -->|reglas de negocio| Domain[Domain<br/>entidades + validaciones]
+    Client[Client<br/>Mobile / Postman] -->|HTTP Request| Router[Router<br/>interfaces]
+    Router -->|Auth middleware| Controller[Controller<br/>interfaces/controllers]
+    Controller -->|calls| UseCase[Use Case<br/>application]
+    UseCase -->|business rules| Domain[Domain<br/>entities + validations]
     UseCase -->|repository interface| Repo[Repository<br/>infrastructure]
     Repo -->|Mongoose| MongoDB[(MongoDB)]
 
-    UseCase -.->|publica evento| EventBus[EventEmitter]
+    UseCase -.->|publishes event| EventBus[EventEmitter]
     EventBus -.->|WebSocket| Socket[Socket.io<br/>infrastructure]
     Socket -.->|push| Client
-
-    flowchart LR
-    subgraph Command
-        C1[CreateConversationUseCase] --> C2[Conversation<br/>entidad pura]
-        C2 --> C3[(MongoDB)]
-    end
 ```
 
+CQRS separates reads from writes. Commands use pure domain entities, while queries use read models optimized for the UI.
+
 ```mermaid
-    flowchart LR
+flowchart LR
+    subgraph Command
+        C1[CreateConversationUseCase] --> C2[Conversation<br/>pure entity]
+        C2 --> C3[(MongoDB)]
+    end
+
     subgraph Query
         Q1[GetConversationsWithDetailsUseCase] --> Q2[ConversationReadModel]
         Q2 -->|$lookup| Q3[(MongoDB)]
