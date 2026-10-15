@@ -17,8 +17,6 @@ professional tech industry. I use AI to help me make decisions and as a
 learning resource rather than to automate my development. I prefer writing 
 the code end to end myself and having the mental model of every single line.
 
----
-
 ## Tech Stack
 
 ### Backend
