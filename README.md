@@ -1,7 +1,8 @@
 # Chat App — Full Stack Architecture Showcase
-
 > A personal project focused on developing architectural thinking and 
 > applying professional patterns. The source code is private.
+
+--
 
 ## Why I Built This
 
