@@ -101,7 +101,7 @@ flowchart LR
 ```
 ---
 
-## Features (Current)
+## Current features
 
 - ✅ User registration and login
 - ✅ Password hashing with bcrypt
@@ -110,7 +110,7 @@ flowchart LR
 - ✅ Real-time messaging with WebSockets
 - ✅ Shared TypeScript types across frontend and backend
 
-## Features (Planned)
+## Planned features
 
 - ⏳ Redis caching (evaluating alternatives)
 - ⏳ Mesh network communication (Bluetooth)
