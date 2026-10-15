@@ -150,3 +150,4 @@ the architecture, decisions, and evolution of the project.
 ## Contact
 
 - LinkedIn: www.linkedin.com/in/lucas-colman-833924210
+- Email: lucascolmantx@gmail.com
