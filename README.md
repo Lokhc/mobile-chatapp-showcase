@@ -3,8 +3,6 @@
 > A personal project focused on developing architectural thinking and 
 > applying professional patterns. The source code is private.
 
----
-
 ## Why I Built This
 
 I'm building a full-stack chat app as a personal project. It's organized as 
