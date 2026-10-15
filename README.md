@@ -52,6 +52,7 @@ The backend is where the complexity is more challenging. I've been applying:
 - **Dependency injection** — decoupling implementations from contracts
 - **Design patterns** — applied where they solve real problems, not for the sake of it
 
+```mermaid
 flowchart LR
     subgraph Apps
         A[apps/backend<br/>Express + Socket.io]
@@ -67,7 +68,9 @@ flowchart LR
     B -->|importa| C
     A -->|usa| D
     B -->|usa| D
+```
 
+```mermaid
 flowchart TD
     Client[Cliente<br/>Mobile / Postman] -->|HTTP Request| Router[Router<br/>interfaces]
     Router -->|Middleware auth| Controller[Controller<br/>interfaces/controllers]
@@ -85,12 +88,14 @@ flowchart TD
         C1[CreateConversationUseCase] --> C2[Conversation<br/>entidad pura]
         C2 --> C3[(MongoDB)]
     end
+```
 
+```mermaid
     subgraph Query
         Q1[GetConversationsWithDetailsUseCase] --> Q2[ConversationReadModel]
         Q2 -->|$lookup| Q3[(MongoDB)]
     end
-
+```
 ---
 
 ## Features (Current)
