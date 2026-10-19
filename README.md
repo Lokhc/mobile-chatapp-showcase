@@ -103,19 +103,19 @@ flowchart LR
 
 ## Current features
 
-- ✅ User registration and login
-- ✅ Password hashing with bcrypt
-- ✅ JWT-based authentication
-- ✅ Secure token storage with expo-secure-store
-- ✅ Real-time messaging with WebSockets
-- ✅ Shared TypeScript types across frontend and backend
+- User registration and login
+- Password hashing with bcrypt
+- JWT-based authentication
+- Secure token storage with expo-secure-store
+- Real-time messaging with WebSockets
+- Shared TypeScript types across frontend and backend
 
 ## Planned features
 
-- ⏳ Redis caching (evaluating alternatives)
-- ⏳ Mesh network communication (Bluetooth)
-- ⏳ AI integration
-- ⏳ Deploy (maybe)
+- Redis caching (evaluating alternatives)
+- Mesh network communication (Bluetooth)
+- AI integration
+- Deploy (maybe)
 
 ---
 
